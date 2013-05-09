@@ -107,9 +107,9 @@
             Console.WriteLine();
             for (int i = 0; i < 5; i++)
             {
-                if (scoreboard[i] != null)
+                if (Scoreboard[i] != null)
                 {
-                    Console.WriteLine("{0}. {1} ---> {2}", i + 1, scoreboard[i].PlayerName, scoreboard[i].NumberOfMistakes);
+                    Console.WriteLine("{0}. {1} ---> {2}", i + 1, Scoreboard[i].PlayerName, Scoreboard[i].NumberOfMistakes);
                 }
             }
 

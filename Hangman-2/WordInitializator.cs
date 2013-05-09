@@ -99,28 +99,28 @@ namespace Hangman
             Console.WriteLine();
             int positionOfTheFirstFreePositionInTheScoereboard = 4;
             for (int i = 0; i < 4; i++)
-                if (CommandExecuter.scoreboard[i] == null)
+                if (CommandExecuter.Scoreboard[i] == null)
                 {
                     positionOfTheFirstFreePositionInTheScoereboard = i;
                     break;
                 }
 
-            if ((CommandExecuter.scoreboard[positionOfTheFirstFreePositionInTheScoereboard] == null //for free position
-                  || num2 <= CommandExecuter.scoreboard[positionOfTheFirstFreePositionInTheScoereboard].NumberOfMistakes)//when the 4th pos is not free)
+            if ((CommandExecuter.Scoreboard[positionOfTheFirstFreePositionInTheScoereboard] == null //for free position
+                  || num2 <= CommandExecuter.Scoreboard[positionOfTheFirstFreePositionInTheScoereboard].NumberOfMistakes)//when the 4th pos is not free)
                   && flag == false)
                 {
 
                     Console.WriteLine("Please enter your name for the top scoreboard:");
                     string playerName = Console.ReadLine();
                     CommandExecuter.PlayerMistakes newResult = new CommandExecuter.PlayerMistakes(playerName, num2);
-                    CommandExecuter.scoreboard[positionOfTheFirstFreePositionInTheScoereboard] = newResult;
+                    CommandExecuter.Scoreboard[positionOfTheFirstFreePositionInTheScoereboard] = newResult;
                     for (int i = positionOfTheFirstFreePositionInTheScoereboard; i > 0; i--)
-                        if (CommandExecuter.scoreboard[i].Compare(CommandExecuter.scoreboard[i-1]) < 0)
+                        if (CommandExecuter.Scoreboard[i].Compare(CommandExecuter.Scoreboard[i - 1]) < 0)
                         {
                             //swap
-                            CommandExecuter.PlayerMistakes temp = CommandExecuter.scoreboard[i];
-                            CommandExecuter.scoreboard[i] =  CommandExecuter.scoreboard[i-1];
-                            CommandExecuter.scoreboard[i-1] = temp;
+                            CommandExecuter.PlayerMistakes temp = CommandExecuter.Scoreboard[i];
+                            CommandExecuter.Scoreboard[i] = CommandExecuter.Scoreboard[i - 1];
+                            CommandExecuter.Scoreboard[i - 1] = temp;
                         }
                 }
             num1 = 0;
