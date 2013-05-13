@@ -73,7 +73,7 @@
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (WordInitializator.allGuessedLettersOrderedByPositionInTheWord[i].Equals('$'))
+                if (WordInitializator.OrderedLettersMask[i].Equals('$'))
                 {
                     firstUnrevealedLetter = word[i];
                     break;
@@ -84,7 +84,7 @@
             WordInitializator.InitializationAfterTheGuess(word, firstUnrevealedLetter);
 
             // flag - not in the chart
-            WordInitializator.flag = true;
+            WordInitializator.IsPlayerUsedHelp = true;
         }
 
         public static void Restart()
@@ -93,10 +93,10 @@
             string word = WordSelector.SelectRandomWord();
 
             // Console.WriteLine(word);
-            WordInitializator.BegginingOfTheGameInitialization(word);
+            WordInitializator.GameInisialization(word);
             WordGuesser wg = new WordGuesser() { Word = word };
 
-            while (WordInitializator.num1 < word.Length && WordGuesser.IsExited == false)
+            while (WordInitializator.GuessedCharsCounter < word.Length && WordGuesser.IsExited == false)
             {
                 wg.GuessLetter();
             }
