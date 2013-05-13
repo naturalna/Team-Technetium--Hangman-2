@@ -1,20 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 namespace Hangman
 {
     public class WordGuesser
     {
-       
-        public string Word { get; set;}
-        public static bool IsExited;
-       //2 methods from WordInitializator must be moved here!
-        public void GuessLetter()
+        private static string word;
+        private static bool isExited;
+
+        public static bool IsExited
+        {
+            get
+            {
+                return isExited;
+            }
+            set
+            {
+                isExited = value;
+            }
+        }
+
+        public static string Word
+        {
+            get
+            {
+                return word;
+            }
+            set
+            {
+                word = value;
+            }
+        }
+
+        private string ReadUserInput()
         {
             Console.WriteLine("Enter your guess: ");
-            string supposedCharOrCommand = Console.ReadLine();
+            string input = Console.ReadLine();
+            return input;
+        }
+
+        //2 methods from WordInitializator must be moved here!
+        public void GuessLetter()
+        {
+            string supposedCharOrCommand = ReadUserInput();
 
             if (supposedCharOrCommand.Length == 1) // the input is a character
             {
@@ -33,6 +60,6 @@ namespace Hangman
             else if (supposedCharOrCommand.Equals("top"))
                 CommandExecuter.TopResults();
 
-        }             
+        }
     }
 }
