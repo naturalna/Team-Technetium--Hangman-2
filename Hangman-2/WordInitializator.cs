@@ -96,42 +96,29 @@ namespace Hangman
             Console.WriteLine();
 
             int firstFreePosition = 4;
-        
+
             for (int i = 0; i < 4; i++)
             {
-                if (CommandExecuter.Scoreboard[i] == null)
+                if (PlayersScore.Scoreboard[i] == null)
                 {
                     firstFreePosition = i;
                     break;
                 }
             }
-            
-            if ((CommandExecuter.Scoreboard[firstFreePosition] == null 
-                || notGuessedCharsCounter <= CommandExecuter.Scoreboard[firstFreePosition].NumberOfMistakes) && IsPlayerUsedHelp == false)
+
+            if ((PlayersScore.Scoreboard[firstFreePosition] == null
+                || notGuessedCharsCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes) && IsPlayerUsedHelp == false)
             {
                 Console.WriteLine("Please enter your name for the top scoreboard:");
                 string playerName = Console.ReadLine();
                 PlayerMistakes newResult = new PlayerMistakes(playerName, notGuessedCharsCounter);
-                CommandExecuter.Scoreboard[firstFreePosition] = newResult;
-                SortScore(firstFreePosition);
+                PlayersScore.Scoreboard[firstFreePosition] = newResult;
+                PlayersScore.SortScore(firstFreePosition);
             }
 
             GuessedCharsCounter = 0;
             notGuessedCharsCounter = 0;
             IsPlayerUsedHelp = false;
-        }
-
-        private static void SortScore(int firstFreePosition)
-        {
-            for (int i = firstFreePosition; i > 0; i--)
-            {
-                if (CommandExecuter.Scoreboard[i].Compare(CommandExecuter.Scoreboard[i - 1]) < 0)
-                {
-                    PlayerMistakes temp = CommandExecuter.Scoreboard[i];
-                    CommandExecuter.Scoreboard[i] = CommandExecuter.Scoreboard[i - 1];
-                    CommandExecuter.Scoreboard[i - 1] = temp;
-                }
-            }
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Hangman
                 return;
             }
             else if (supposedCharOrCommand.Equals("top"))
-                CommandExecuter.TopResults();
+                PlayersScore.TopResults();
 
         }
     }
