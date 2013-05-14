@@ -36,6 +36,19 @@ namespace WordInitializatorTest
             Assert.IsTrue(randerer.GuessedCharsCounter == 2);
         }
 
+
+        [TestMethod]
+        public void InitializationAfterTheGuessTest_AlreadyRevelaedLetter()
+        {
+            string word = "test";
+            GuessRanderer randerer = new GuessRanderer();
+            randerer.GameInisialization(word);
+            randerer.InitializationAfterTheGuess(word, 't');
+            int openLetters = randerer.GuessedCharsCounter;
+            randerer.InitializationAfterTheGuess(word, 't');
+            Assert.IsTrue(openLetters == randerer.GuessedCharsCounter);
+        }
+
         [TestMethod]
         public void RevealTheNextLetterByHelpTest_useHelpTwice()
         {
@@ -46,5 +59,6 @@ namespace WordInitializatorTest
             randerer.RevealTheNextLetterByHelp(word);
             Assert.AreEqual(true, randerer.IsPlayerUsedHelp);
         }
+
     }
 }
