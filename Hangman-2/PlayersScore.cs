@@ -2,12 +2,12 @@
 
 namespace Hangman
 {
-    class PlayersScore
+    static class PlayersScore
     {
         private const int HighScoresNumber = 5;// used to be HIGH_SCORES_NUMBER
-        private static readonly PlayerMistakes[] scoreboard = new PlayerMistakes[HighScoresNumber];
+        private static readonly Player[] scoreboard = new Player[HighScoresNumber];
 
-        public static PlayerMistakes[] Scoreboard
+        public static Player[] Scoreboard
         {
             get
             {
@@ -15,7 +15,7 @@ namespace Hangman
             }
         }
 
-        public static void TopResults()
+        public static void PrintTopResults() // used to be TopResults
         {
             Console.WriteLine();
             for (int i = 0; i < 5; i++)
@@ -29,13 +29,13 @@ namespace Hangman
             Console.WriteLine();
         }
 
-        internal static void SortScore(int firstFreePosition)
+        internal static void PlaceScore(int firstFreePosition) //used to be SortScore
         {
             for (int i = firstFreePosition; i > 0; i--)
             {
                 if (Scoreboard[i].Compare(Scoreboard[i - 1]) < 0)
                 {
-                    PlayerMistakes temp = Scoreboard[i];
+                    Player temp = Scoreboard[i];
                     Scoreboard[i] = Scoreboard[i - 1];
                     Scoreboard[i - 1] = temp;
                 }

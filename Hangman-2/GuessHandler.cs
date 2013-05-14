@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Hangman
 {
-    public class GuessRanderer : WordInitializator
+    public class GuessHandler : WordInitializator
     {
-        public GuessRanderer()
+        public GuessHandler() //used to be GuessRanderer
             : base()
         {
         }
@@ -16,9 +14,9 @@ namespace Hangman
         {
             int supposedCharCounter = 0;
 
-            if (base.OrderedLettersMask.Contains<char>(charSupposed))
+            if (base.RevealedChars.Contains<char>(charSupposed))
             {
-                Console.WriteLine("You have already revelaed the letter {0}", charSupposed);
+                Console.WriteLine("You have already revelaed the letter {0}.", charSupposed);
                 return;
             }
 
@@ -26,7 +24,7 @@ namespace Hangman
             {
                 if (word[i].Equals(charSupposed))
                 {
-                    base.OrderedLettersMask[i] = word[i];
+                    base.RevealedChars[i] = word[i];
                     supposedCharCounter++;
                 }
             }
@@ -44,8 +42,8 @@ namespace Hangman
 
             if (base.GuessedCharsCounter == word.Length)
             {
-                base.GameEndInitialization(word);
-                CommandExecuter.Restart();
+                base.ShowResults(word);
+                CommandExecuter.Start();
             }
 
             Console.WriteLine("The secret word is:");
@@ -57,7 +55,7 @@ namespace Hangman
             char firstUnrevealedLetter = GetFirstUnrevealedLetter(word);
             Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
             this.InitializationAfterTheGuess(word, firstUnrevealedLetter);
-            base.IsPlayerUsedHelp = true;
+            base.PlayerHasUsedHelp = true;
         }
 
         private char GetFirstUnrevealedLetter(string word)
@@ -66,7 +64,7 @@ namespace Hangman
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (base.OrderedLettersMask[i].Equals('$'))
+                if (base.RevealedChars[i].Equals('$'))
                 {
                     firstUnrevealedLetter = word[i];
                     break;

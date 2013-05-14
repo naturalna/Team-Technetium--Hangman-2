@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
+
 namespace Hangman
 {
     public class WordGuesser
     {
-        
         private static string word;
-        private static bool isExited;
+        private static bool hasExited;
 
-        public static bool IsExited
+        public static bool HasExited //used to be IsExited
         {
             get
             {
-                return isExited;
+                return hasExited;
             }
             set
             {
-                isExited = value;
+                hasExited = value;
             }
         }
 
@@ -39,28 +38,32 @@ namespace Hangman
             string input = Console.ReadLine();
             return input;
         }
-        
-        //2 methods from WordInitializator must be moved here!
-        public void GuessLetter(GuessRanderer randerer)
+
+        public void HandleUserInput(GuessHandler guessHandler) //used to be GuessLetter
         {
             string supposedCharOrCommand = ReadUserInput();
 
-            if (supposedCharOrCommand.Length == 1) // the input is a character
+            if (supposedCharOrCommand.Length == 1)
             {
                 char supposedChar = supposedCharOrCommand[0];
-                randerer.InitializationAfterTheGuess(Word, supposedChar);
+                guessHandler.InitializationAfterTheGuess(Word, supposedChar);
             }
             else if (supposedCharOrCommand.Equals("help"))
-                randerer.RevealTheNextLetterByHelp(Word);
+            {
+                guessHandler.RevealTheNextLetterByHelp(Word);
+            }
             else if (supposedCharOrCommand.Equals("restart"))
-                CommandExecuter.Restart();
+            {
+                CommandExecuter.Start();
+            }
             else if (supposedCharOrCommand.Equals("exit"))
             {
                 CommandExecuter.Exit();
-                return;
             }
             else if (supposedCharOrCommand.Equals("top"))
-                PlayersScore.TopResults();
+            {
+                CommandExecuter.Top();
+            }
 
         }
     }

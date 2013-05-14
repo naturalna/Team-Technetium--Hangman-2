@@ -1,30 +1,35 @@
-﻿namespace Hangman
-{
-    using System;
+﻿using System;
 
-    public class CommandExecuter
+namespace Hangman
+{
+    public static class CommandExecuter
     {
-        public static void Restart()
+        public static void Start() //used to be Restart
         {
             Console.WriteLine();
-            string word = WordSelector.SelectRandomWord();
-            GuessRanderer randerer = new GuessRanderer();
+            WordSelector wordSelector = new WordSelector();
+            string word = wordSelector.SelectRandomWord();
+            GuessHandler randerer = new GuessHandler();
 
-            // Console.WriteLine(word);
-            randerer.GameInisialization(word);
-            WordGuesser wg = new WordGuesser();
+            randerer.PlayRound(word);
+            WordGuesser wordGuesser = new WordGuesser(); //used to be wg
             WordGuesser.Word = word;
 
-            while (randerer.GuessedCharsCounter < word.Length && WordGuesser.IsExited == false)
+            while (randerer.GuessedCharsCounter < word.Length && WordGuesser.HasExited == false)
             {
-                wg.GuessLetter(randerer);
+                wordGuesser.HandleUserInput(randerer);
             }
+        }
+
+        public static void Top()
+        {
+            PlayersScore.PrintTopResults();
         }
 
         public static void Exit()
         {
             Console.WriteLine("Good bye!");
-            WordGuesser.IsExited = true;
+            WordGuesser.HasExited = true;
             return;
         }
     }

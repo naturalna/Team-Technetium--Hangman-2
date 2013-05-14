@@ -7,13 +7,16 @@ namespace Hangman
 {
     public class WordInitializator
     {
-        private bool isPlayerUsedHelp = false;
-        private char[] orderedLettersMask;
-        private int guessedCharsCounter = 0;
-        private int notGuessedCharsCounter = 0;
+        private bool playerHasUsedHelp;//used to be isPlayerUsedHelp
+        private char[] revealedChars; //used to be orderedLettersMask
+        private int guessedCharsCounter;
+        private int notGuessedCharsCounter;
 
         public WordInitializator()
         {
+            playerHasUsedHelp = false;
+            guessedCharsCounter = 0;
+            notGuessedCharsCounter = 0;
         }
 
         public int GuessedCharsCounter 
@@ -22,7 +25,7 @@ namespace Hangman
             { 
                 return this.guessedCharsCounter;
             }
-            set 
+            protected set 
             { 
                 this.guessedCharsCounter = value; 
             }
@@ -40,45 +43,38 @@ namespace Hangman
             }
         }
 
-        public bool IsPlayerUsedHelp 
+        public bool PlayerHasUsedHelp 
         { 
             get
             {
-                return this.isPlayerUsedHelp;
+                return this.playerHasUsedHelp;
             }
             set
             {
-                this.isPlayerUsedHelp = value;
+                this.playerHasUsedHelp = value;
             }
         }
 
-        public char[] OrderedLettersMask 
+        public char[] RevealedChars //used to be OrderedLettersMask 
         {
             get 
             {
-                return this.orderedLettersMask;
+                return this.revealedChars;
             }
             set
             {
-                this.orderedLettersMask = value;
+                this.revealedChars = value;
             }
         }
 
-        //public static bool IsPlayerUsedHelp = false;
-        
-        //public static char[] OrderedLettersMask;
-
-        public void GameInisialization(string word)
+        public void PlayRound(string word) //used to be GameInisialization
         {
-            Console.WriteLine("Welcome to “Hangman” game. Please try to guess my secret word.");
-            Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
-
-            this.OrderedLettersMask = new char[word.Length];
+            this.RevealedChars = new char[word.Length];
             StringBuilder hiddenWord = new StringBuilder();
 
             for (int i = 0; i < word.Length; i++)
             {
-                this.OrderedLettersMask[i] = '$';
+                this.RevealedChars[i] = '$';
                 hiddenWord.Append("_ ");
             }
 
@@ -87,7 +83,7 @@ namespace Hangman
             Console.WriteLine(hiddenWord + "\n");
         }
 
-        protected void GameEndInitialization(string word)
+        protected void ShowResults(string word)//used to be GameEndInitialization
         {
             Console.WriteLine("You won with {0} mistakes.", this.NotGuessedCharsCounter);
             this.RevealGuessedLetters(word);
@@ -105,18 +101,20 @@ namespace Hangman
             }
 
             if ((PlayersScore.Scoreboard[firstFreePosition] == null
-                || this.NotGuessedCharsCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes) && IsPlayerUsedHelp == false)
+                || this.NotGuessedCharsCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes) 
+                && PlayerHasUsedHelp == false)
             {
-                Console.WriteLine("Please enter your name for the top scoreboard:");
-                string playerName = Console.ReadLine();
-                PlayerMistakes newResult = new PlayerMistakes(playerName, this.NotGuessedCharsCounter);
-                PlayersScore.Scoreboard[firstFreePosition] = newResult;
-                PlayersScore.SortScore(firstFreePosition);
+                GetHighScoreEntry(firstFreePosition);
             }
-
-            this.GuessedCharsCounter = 0;
-            this.NotGuessedCharsCounter = 0;
-            this.IsPlayerUsedHelp = false;
+        }
+  
+        private void GetHighScoreEntry(int firstFreePosition)
+        {
+            Console.WriteLine("Please enter your name for the top scoreboard:");
+            string playerName = Console.ReadLine();
+            Player player = new Player(playerName, this.NotGuessedCharsCounter);//used to be newResult
+            PlayersScore.Scoreboard[firstFreePosition] = player;
+            PlayersScore.PlaceScore(firstFreePosition);
         }
 
         protected void RevealGuessedLetters(string word)
@@ -125,13 +123,13 @@ namespace Hangman
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (this.OrderedLettersMask[i].Equals('$'))
+                if (this.RevealedChars[i].Equals('$'))
                 {
                     partiallyHiddenWord.Append("_ ");
                 }
                 else
                 {
-                    partiallyHiddenWord.Append(this.OrderedLettersMask[i].ToString() + " ");
+                    partiallyHiddenWord.Append(this.RevealedChars[i].ToString() + " ");
                 }
             }
 

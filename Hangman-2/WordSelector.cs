@@ -5,7 +5,6 @@ namespace Hangman
 {
     class WordSelector
     {
-        //why public
         private static readonly string[] words =
         {
             "computer", "programmer", "software", "debugger", "compiler",
@@ -17,7 +16,8 @@ namespace Hangman
             Random random = new Random();
             return random.Next(min, max);
         }
-        public static string SelectRandomWord()
+
+        public string SelectRandomWord()
         {
             //including 0, exluding word.Length
             int randomPosition = RandomNumber(0, words.Length);//used to be randomPositionOfTheWordToBeSelected
@@ -25,9 +25,6 @@ namespace Hangman
             return randomlySelectedWord;
         }
 
-        static void Main(string[] args)
-        {
-            CommandExecuter.Restart();
-        }
+        
     }
 }

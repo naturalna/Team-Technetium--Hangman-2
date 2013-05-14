@@ -2,8 +2,11 @@
 
 namespace Hangman
 {
-    public class PlayerMistakes
+    public class Player //used to be PlayerMistake
     {
+        private string playerName;
+        private int numberOfMistakes;
+
         public string PlayerName
         {
             get
@@ -40,13 +43,13 @@ namespace Hangman
             }
         }
 
-        public PlayerMistakes(string playerName, int numberOfMistakes)
+        public Player(string playerName, int numberOfMistakes)
         {
             this.PlayerName = playerName;
             this.NumberOfMistakes = numberOfMistakes;
         }
 
-        public int Compare(PlayerMistakes otherPlayer)
+        public int Compare(Player otherPlayer)
         {
             if (this.NumberOfMistakes <= otherPlayer.NumberOfMistakes) //what happens if number of mistakes is equal?
             {
@@ -57,9 +60,5 @@ namespace Hangman
                 return 1; // the newer one replaces the older
             }
         }
-
-        private string playerName;
-
-        private int numberOfMistakes;
     }
 }
