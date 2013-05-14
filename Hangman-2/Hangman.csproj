@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandExecuter.cs" />
+    <Compile Include="GuessRanderer.cs" />
     <Compile Include="PlayerMistakes.cs" />
     <Compile Include="PlayersScore.cs" />
     <Compile Include="WordGuesser.cs" />

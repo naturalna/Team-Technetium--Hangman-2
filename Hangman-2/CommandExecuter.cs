@@ -4,13 +4,16 @@
 
     public class CommandExecuter
     {
+        //private static WordInitializator wordInitializator = new WordInitializator();
+        private static GuessRanderer randerer = new GuessRanderer();
+
         public static void RevealTheNextLetter(string word)
         {
             char firstUnrevealedLetter = '$';
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (WordInitializator.OrderedLettersMask[i].Equals('$'))
+                if (randerer.OrderedLettersMask[i].Equals('$'))
                 {
                     firstUnrevealedLetter = word[i];
                     break;
@@ -18,10 +21,10 @@
             }
 
             Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
-            WordGuesser.InitializationAfterTheGuess(word, firstUnrevealedLetter);
+            randerer.InitializationAfterTheGuess(word, firstUnrevealedLetter);
 
             // flag - not in the chart
-            WordInitializator.IsPlayerUsedHelp = true;
+            randerer.IsPlayerUsedHelp = true;
         }
 
         public static void Restart()
@@ -30,13 +33,13 @@
             string word = WordSelector.SelectRandomWord();
 
             // Console.WriteLine(word);
-            WordInitializator.GameInisialization(word);
+            randerer.GameInisialization(word);
             WordGuesser wg = new WordGuesser();
             WordGuesser.Word = word;
 
-            while (WordGuesser.GuessedCharsCounter < word.Length && WordGuesser.IsExited == false)
+            while (randerer.GuessedCharsCounter < word.Length && WordGuesser.IsExited == false)
             {
-                wg.GuessLetter();
+                wg.GuessLetter(randerer);
             }
         }
 
