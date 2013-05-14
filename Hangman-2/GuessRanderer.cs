@@ -50,5 +50,24 @@ namespace Hangman
             Console.WriteLine("The secret word is:");
             base.RevealGuessedLetters(word);
         }
+
+        public void RevealTheNextLetterByHelp(string word)
+        {
+            char firstUnrevealedLetter = '$';
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (base.OrderedLettersMask[i].Equals('$'))
+                {
+                    firstUnrevealedLetter = word[i];
+                    break;
+                }
+            }
+
+            Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
+            this.InitializationAfterTheGuess(word, firstUnrevealedLetter);
+
+            base.IsPlayerUsedHelp = true;
+        }
     }
 }

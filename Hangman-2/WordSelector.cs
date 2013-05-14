@@ -20,15 +20,12 @@ namespace Hangman
         {
             int randomPositionOfTheWordToBeSelected = RandomNumber(0, words.Length);//including 0, exluding word.Length
             string randomlySelectedWord = words.ElementAt(randomPositionOfTheWordToBeSelected);
-            return randomlySelectedWord;
-        
+            return randomlySelectedWord;      
         }
-        
-
+      
         static void Main(string[] args)
         {
-            CommandExecuter.Restart();
-                     
+            CommandExecuter.Restart();                     
         }
     }
 }

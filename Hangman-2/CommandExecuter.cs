@@ -4,32 +4,11 @@
 
     public class CommandExecuter
     {
-        private static GuessRanderer randerer = new GuessRanderer();
-
-        public static void RevealTheNextLetter(string word)
-        {
-            char firstUnrevealedLetter = '$';
-
-            for (int i = 0; i < word.Length; i++)
-            {
-                if (randerer.OrderedLettersMask[i].Equals('$'))
-                {
-                    firstUnrevealedLetter = word[i];
-                    break;
-                }
-            }
-
-            Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
-            randerer.InitializationAfterTheGuess(word, firstUnrevealedLetter);
-
-            // flag - not in the chart
-            randerer.IsPlayerUsedHelp = true;
-        }
-
         public static void Restart()
         {
             Console.WriteLine();
             string word = WordSelector.SelectRandomWord();
+            GuessRanderer randerer = new GuessRanderer();
 
             // Console.WriteLine(word);
             randerer.GameInisialization(word);

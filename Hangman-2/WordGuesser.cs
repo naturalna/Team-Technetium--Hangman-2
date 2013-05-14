@@ -51,7 +51,7 @@ namespace Hangman
                 randerer.InitializationAfterTheGuess(Word, supposedChar);
             }
             else if (supposedCharOrCommand.Equals("help"))
-                CommandExecuter.RevealTheNextLetter(Word);
+                randerer.RevealTheNextLetterByHelp(Word);
             else if (supposedCharOrCommand.Equals("restart"))
                 CommandExecuter.Restart();
             else if (supposedCharOrCommand.Equals("exit"))
