@@ -18,7 +18,7 @@
             }
 
             Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
-            WordInitializator.InitializationAfterTheGuess(word, firstUnrevealedLetter);
+            WordGuesser.InitializationAfterTheGuess(word, firstUnrevealedLetter);
 
             // flag - not in the chart
             WordInitializator.IsPlayerUsedHelp = true;
@@ -34,7 +34,7 @@
             WordGuesser wg = new WordGuesser();
             WordGuesser.Word = word;
 
-            while (WordInitializator.GuessedCharsCounter < word.Length && WordGuesser.IsExited == false)
+            while (WordGuesser.GuessedCharsCounter < word.Length && WordGuesser.IsExited == false)
             {
                 wg.GuessLetter();
             }
