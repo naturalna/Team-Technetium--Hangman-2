@@ -48,7 +48,7 @@ namespace Hangman
 
         public int Compare(PlayerMistakes otherPlayer)
         {
-            if (this.NumberOfMistakes <= otherPlayer.NumberOfMistakes)
+            if (this.NumberOfMistakes <= otherPlayer.NumberOfMistakes) //what happens if number of mistakes is equal?
             {
                 return -1;
             }
