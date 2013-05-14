@@ -28,7 +28,7 @@ namespace Hangman
             }
         }
 
-        public int NotGuessedCharsCounter
+        protected int NotGuessedCharsCounter
         {
             get
             {
@@ -87,7 +87,7 @@ namespace Hangman
             Console.WriteLine(hiddenWord + "\n");
         }
 
-        public void GameEndInitialization(string word)
+        protected void GameEndInitialization(string word)
         {
             Console.WriteLine("You won with {0} mistakes.", this.NotGuessedCharsCounter);
             this.RevealGuessedLetters(word);
@@ -119,7 +119,7 @@ namespace Hangman
             this.IsPlayerUsedHelp = false;
         }
 
-        public void RevealGuessedLetters(string word)
+        protected void RevealGuessedLetters(string word)
         {
             StringBuilder partiallyHiddenWord = new StringBuilder();
 

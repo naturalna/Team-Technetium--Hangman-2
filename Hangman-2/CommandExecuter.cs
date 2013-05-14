@@ -4,7 +4,6 @@
 
     public class CommandExecuter
     {
-        //private static WordInitializator wordInitializator = new WordInitializator();
         private static GuessRanderer randerer = new GuessRanderer();
 
         public static void RevealTheNextLetter(string word)

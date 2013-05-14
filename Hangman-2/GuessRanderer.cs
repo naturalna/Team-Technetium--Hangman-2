@@ -7,7 +7,7 @@ namespace Hangman
 {
     public class GuessRanderer : WordInitializator
     {
-        public GuessRanderer()
+        public GuessRanderer(): base()
         {
         }
 
