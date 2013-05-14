@@ -10,6 +10,7 @@ namespace Hangman
         private bool isPlayerUsedHelp = false;
         private char[] orderedLettersMask;
         private int guessedCharsCounter = 0;
+        private int notGuessedCharsCounter = 0;
 
         public WordInitializator()
         {
@@ -27,7 +28,17 @@ namespace Hangman
             }
         }
 
-        public int NotGuessedCharsCounter = 0;
+        public int NotGuessedCharsCounter
+        {
+            get
+            {
+                return this.notGuessedCharsCounter;
+            }
+            set
+            {
+                this.notGuessedCharsCounter = value;
+            }
+        }
 
         public bool IsPlayerUsedHelp 
         { 
