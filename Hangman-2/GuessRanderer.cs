@@ -7,14 +7,15 @@ namespace Hangman
 {
     public class GuessRanderer : WordInitializator
     {
-        public GuessRanderer(): base()
+        public GuessRanderer()
+            : base()
         {
         }
 
-        public void InitializationAfterTheGuess( string word, char charSupposed)
+        public void InitializationAfterTheGuess(string word, char charSupposed)
         {
             int supposedCharCounter = 0;
-            
+
             if (base.OrderedLettersMask.Contains<char>(charSupposed))
             {
                 Console.WriteLine("You have already revelaed the letter {0}", charSupposed);
@@ -53,6 +54,14 @@ namespace Hangman
 
         public void RevealTheNextLetterByHelp(string word)
         {
+            char firstUnrevealedLetter = GetFirstUnrevealedLetter(word);
+            Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
+            this.InitializationAfterTheGuess(word, firstUnrevealedLetter);
+            base.IsPlayerUsedHelp = true;
+        }
+
+        private char GetFirstUnrevealedLetter(string word)
+        {
             char firstUnrevealedLetter = '$';
 
             for (int i = 0; i < word.Length; i++)
@@ -63,11 +72,7 @@ namespace Hangman
                     break;
                 }
             }
-
-            Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
-            this.InitializationAfterTheGuess(word, firstUnrevealedLetter);
-
-            base.IsPlayerUsedHelp = true;
+            return firstUnrevealedLetter;
         }
     }
 }

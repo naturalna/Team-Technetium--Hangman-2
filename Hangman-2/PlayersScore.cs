@@ -4,8 +4,8 @@ namespace Hangman
 {
     class PlayersScore
     {
-        private const int HIGH_SCORES_NUMBER = 5;
-        private static PlayerMistakes[] scoreboard = new PlayerMistakes[HIGH_SCORES_NUMBER];
+        private const int HighScoresNumber = 5;// used to be HIGH_SCORES_NUMBER
+        private static readonly PlayerMistakes[] scoreboard = new PlayerMistakes[HighScoresNumber];
 
         public static PlayerMistakes[] Scoreboard
         {
