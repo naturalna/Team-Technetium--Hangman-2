@@ -1,20 +1,37 @@
-﻿using System;
-using System.Linq;
+﻿//----------------------------------------------------------------------------------
+// <copyright file="GuessHandler.cs" company="Teleric Academy Technetium Team">
+// Teleric Academy
+// </copyright>
+//---------------------------------------------------------------------------------
 
 namespace Hangman
 {
+    using System;
+    using System.Linq;
+    
+    /// <summary>
+    /// Manages the guesses of player
+    /// </summary>
     public class GuessHandler : WordInitializator
     {
-        public GuessHandler() //used to be GuessRanderer
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GuessHandler"/> class
+        /// </summary>
+        public GuessHandler() // used to be GuessRanderer
             : base()
         {
         }
 
+        /// <summary>
+        /// Initialize the word again after the player has guessed a letter
+        /// </summary>
+        /// <param name="word">Word to be guessed by player</param>
+        /// <param name="charSupposed">Char entered by player</param>
         public void InitializationAfterTheGuess(string word, char charSupposed)
         {
             int supposedCharCounter = 0;
 
-            if (base.RevealedChars.Contains<char>(charSupposed))
+            if (RevealedChars.Contains<char>(charSupposed))
             {
                 Console.WriteLine("You have already revelaed the letter {0}.", charSupposed);
                 return;
@@ -24,7 +41,7 @@ namespace Hangman
             {
                 if (word[i].Equals(charSupposed))
                 {
-                    base.RevealedChars[i] = word[i];
+                    this.RevealedChars[i] = word[i];
                     supposedCharCounter++;
                 }
             }
@@ -32,39 +49,48 @@ namespace Hangman
             if (supposedCharCounter == 0)
             {
                 Console.WriteLine("Sorry! There are no unrevealed letters {0}", charSupposed);
-                base.NotGuessedCharsCounter++;
+                this.NotGuessedCharsCounter++;
             }
             else
             {
                 Console.WriteLine("Good job! You revealed {0} letters.\n", supposedCharCounter);
-                base.GuessedCharsCounter += supposedCharCounter;
+                this.GuessedCharsCounter += supposedCharCounter;
             }
 
-            if (base.GuessedCharsCounter == word.Length)
+            if (this.GuessedCharsCounter == word.Length)
             {
-                base.ShowResults(word);
+                this.ShowResults(word);
                 CommandExecuter.Start();
             }
 
             Console.WriteLine("The secret word is:");
-            base.RevealGuessedLetters(word);
+            this.RevealGuessedLetters(word);
         }
 
+        /// <summary>
+        /// Reveals a letter from the word when player asks for help
+        /// </summary>
+        /// <param name="word">Word to be guessed by player</param>
         public void RevealTheNextLetterByHelp(string word)
         {
-            char firstUnrevealedLetter = GetFirstUnrevealedLetter(word);
+            char firstUnrevealedLetter = this.GetFirstUnrevealedLetter(word);
             Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
             this.InitializationAfterTheGuess(word, firstUnrevealedLetter);
-            base.PlayerHasUsedHelp = true;
+            this.PlayerHasUsedHelp = true;
         }
 
+        /// <summary>
+        /// Gets first unrevealed letter in the word
+        /// </summary>
+        /// <param name="word">Word to be guessed by player</param>
+        /// <returns>First not guessed letter in the word</returns>
         private char GetFirstUnrevealedLetter(string word)
         {
             char firstUnrevealedLetter = '$';
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (base.RevealedChars[i].Equals('$'))
+                if (this.RevealedChars[i].Equals('$'))
                 {
                     firstUnrevealedLetter = word[i];
                     break;
