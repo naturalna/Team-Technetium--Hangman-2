@@ -12,7 +12,7 @@ namespace Hangman
         private int guessedCharsCounter;
         private int notGuessedCharsCounter;
 
-            public WordInitializator()
+        public WordInitializator()
                {
                 playerHasUsedHelp = false;
                 guessedCharsCounter = 0;
@@ -74,7 +74,7 @@ namespace Hangman
             //Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
             stringBuilderInit.AppendLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
             StringBuilder hiddenWord = new StringBuilder();
-
+            this.RevealedChars = new char[word.Length];
             for (int i = 0; i < word.Length; i++)
             {
                 this.RevealedChars[i] = '$';

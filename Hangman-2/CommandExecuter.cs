@@ -10,7 +10,6 @@ namespace Hangman
             WordSelector wordSelector = new WordSelector();
             string word = wordSelector.SelectRandomWord();
             GuessHandler randerer = new GuessHandler();
-
             randerer.PlayRound(word);
             WordGuesser wordGuesser = new WordGuesser(); //used to be wg
             WordGuesser.Word = word;
