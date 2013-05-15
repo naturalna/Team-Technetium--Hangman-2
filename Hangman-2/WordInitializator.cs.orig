@@ -12,12 +12,16 @@ namespace Hangman
         private int guessedCharsCounter;
         private int notGuessedCharsCounter;
 
-            public WordInitializator()
-               {
-                playerHasUsedHelp = false;
-                guessedCharsCounter = 0;
-                notGuessedCharsCounter = 0;
-            }
+<<<<<<< HEAD
+        public WordInitializator()
+        {
+            playerHasUsedHelp = false;
+            guessedCharsCounter = 0;
+            notGuessedCharsCounter = 0;
+        }
+
+=======
+>>>>>>> b9e7c4a8e5264bf6792d8a8dd65c64a52dfae191
         public int GuessedCharsCounter 
         {
             get 
@@ -66,13 +70,17 @@ namespace Hangman
             }
         }
 
-        //public static bool IsPlayerUsedHelp = false;
-        public void PlayRound(string word)
+        public void PlayRound(string word) //used to be GameInisialization
         {
-            Console.WriteLine("Welcome to �Hangman� game. Please try to guess my secret word.");
+            this.RevealedChars = new char[word.Length];
+        }
+        public void GameInisialization(string word)
+        {
             StringBuilder stringBuilderInit = new StringBuilder();
-            //Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
+            stringBuilderInit.AppendLine("Welcome to “Hangman” game. Please try to guess my secret word.");
             stringBuilderInit.AppendLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
+            
+            this.OrderedLettersMask = new char[word.Length];
             StringBuilder hiddenWord = new StringBuilder();
 
             for (int i = 0; i < word.Length; i++)

@@ -5,19 +5,20 @@ using System.Text;
 
 namespace Hangman
 {
-    public abstract class WordInitializator
+    public class WordInitializator
     {
         private bool playerHasUsedHelp;//used to be isPlayerUsedHelp
         private char[] revealedChars; //used to be orderedLettersMask
         private int guessedCharsCounter;
         private int notGuessedCharsCounter;
 
-            public WordInitializator()
-               {
-                playerHasUsedHelp = false;
-                guessedCharsCounter = 0;
-                notGuessedCharsCounter = 0;
-            }
+        public WordInitializator()
+        {
+            playerHasUsedHelp = false;
+            guessedCharsCounter = 0;
+            notGuessedCharsCounter = 0;
+        }
+
         public int GuessedCharsCounter 
         {
             get 
@@ -30,13 +31,13 @@ namespace Hangman
             }
         }
 
-        public int NotGuessedCharsCounter
+        protected int NotGuessedCharsCounter
         {
             get
             {
                 return this.notGuessedCharsCounter;
             }
-            protected set
+            set
             {
                 this.notGuessedCharsCounter = value;
             }
@@ -48,7 +49,7 @@ namespace Hangman
             {
                 return this.playerHasUsedHelp;
             }
-            protected set
+            set
             {
                 this.playerHasUsedHelp = value;
             }
@@ -60,19 +61,15 @@ namespace Hangman
             {
                 return this.revealedChars;
             }
-            protected set
+            set
             {
                 this.revealedChars = value;
             }
         }
 
-        //public static bool IsPlayerUsedHelp = false;
-        public void PlayRound(string word)
+        public void PlayRound(string word) //used to be GameInisialization
         {
-            Console.WriteLine("Welcome to �Hangman� game. Please try to guess my secret word.");
-            StringBuilder stringBuilderInit = new StringBuilder();
-            //Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
-            stringBuilderInit.AppendLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
+            this.RevealedChars = new char[word.Length];
             StringBuilder hiddenWord = new StringBuilder();
 
             for (int i = 0; i < word.Length; i++)
@@ -81,10 +78,9 @@ namespace Hangman
                 hiddenWord.Append("_ ");
             }
 
-            stringBuilderInit.AppendLine("");
-            stringBuilderInit.AppendLine("The secret word is: ");
-            stringBuilderInit.AppendLine(hiddenWord.ToString());
-            Console.WriteLine(stringBuilderInit.ToString());
+            Console.WriteLine();
+            Console.WriteLine("The secret word is: ");
+            Console.WriteLine(hiddenWord + "\n");
         }
 
         protected void ShowResults(string word)//used to be GameEndInitialization
@@ -139,5 +135,7 @@ namespace Hangman
 
             Console.WriteLine(partiallyHiddenWord);
         }
+
+        
     }
 }
