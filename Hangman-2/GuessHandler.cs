@@ -70,6 +70,7 @@ namespace Hangman
                     break;
                 }
             }
+
             return firstUnrevealedLetter;
         }
     }
