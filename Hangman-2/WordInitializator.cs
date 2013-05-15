@@ -1,78 +1,135 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//----------------------------------------------------------------------------------
+// <copyright file="WordInitializator.cs" company="Teleric Academy Technetium Team">
+// Teleric Academy
+// </copyright>
+//----------------------------------------------------------------------------------
 
 namespace Hangman
 {
+    using System;
+    using System.Text;
+
+    /// <summary>
+    /// Manages the initialization of the words
+    /// </summary>
     public abstract class WordInitializator
     {
-        private bool playerHasUsedHelp;//used to be isPlayerUsedHelp
-        private char[] revealedChars; //used to be orderedLettersMask
+        /// <summary>
+        /// Keep track of whether player has used help
+        /// </summary>
+        private bool playerHasUsedHelp; // used to be isPlayerUsedHelp
+
+        /// <summary>
+        /// Keeps revealed chars
+        /// </summary>
+        private char[] revealedChars; // used to be orderedLettersMask
+
+        /// <summary>
+        /// Counts guessed chars
+        /// </summary>
         private int guessedCharsCounter;
+
+        /// <summary>
+        /// Counts not guessed chars
+        /// </summary>
         private int notGuessedCharsCounter;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WordInitializator"/> class
+        /// </summary>
         public WordInitializator()
-               {
-                playerHasUsedHelp = false;
-                guessedCharsCounter = 0;
-                notGuessedCharsCounter = 0;
-            }
-        public int GuessedCharsCounter 
         {
-            get 
-            { 
+            this.playerHasUsedHelp = false;
+            this.guessedCharsCounter = 0;
+            this.notGuessedCharsCounter = 0;
+        }
+
+        /// <summary>
+        /// Gets or sets number of guessed chars
+        /// </summary>
+        public int GuessedCharsCounter
+        {
+            get
+            {
                 return this.guessedCharsCounter;
             }
-            protected set 
-            { 
-                this.guessedCharsCounter = value; 
+
+            protected set
+            {
+                this.guessedCharsCounter = value;
             }
         }
 
+        /// <summary>
+        /// Gets or sets number of not guessed chars
+        /// </summary>
         public int NotGuessedCharsCounter
         {
             get
             {
                 return this.notGuessedCharsCounter;
             }
+
             protected set
             {
                 this.notGuessedCharsCounter = value;
             }
         }
 
-        public bool PlayerHasUsedHelp 
-        { 
+        /// <summary>
+        /// Gets or sets a value indicating whether the player has used help
+        /// </summary>
+        public bool PlayerHasUsedHelp
+        {
             get
             {
                 return this.playerHasUsedHelp;
             }
+
             protected set
             {
                 this.playerHasUsedHelp = value;
             }
         }
 
-        public char[] RevealedChars //used to be OrderedLettersMask 
+        /// <summary>
+        /// Gets or sets revealed by player chars
+        /// </summary>
+        public char[] RevealedChars // used to be OrderedLettersMask 
         {
-            get 
+            get
             {
                 return this.revealedChars;
             }
+
             protected set
             {
                 this.revealedChars = value;
             }
         }
 
-        //public static bool IsPlayerUsedHelp = false;
+        /// <summary>
+        /// Gets the name of the player
+        /// </summary>
+        /// <returns>Name of the player</returns>
+        public static string GetPlayerName()
+        {
+            Console.WriteLine("Please enter your name for the top scoreboard:");
+            string playerName = Console.ReadLine();
+            return playerName;
+        }
+
+        // public static bool IsPlayerUsedHelp = false;
+
+        /// <summary>
+        /// Starts the new game with new word
+        /// </summary>
+        /// <param name="word"> Word to be guessed by player</param>
         public void PlayRound(string word)
         {
-            Console.WriteLine("Welcome to �Hangman� game. Please try to guess my secret word.");
+            Console.WriteLine("Please try to guess my secret word.");
             StringBuilder stringBuilderInit = new StringBuilder();
-            //Console.WriteLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
-            stringBuilderInit.AppendLine("Use 'top' to view the top scoreboard, 'restart' to start a new game,'help' to cheat and 'exit' to quit the game.");
+
             StringBuilder hiddenWord = new StringBuilder();
             this.RevealedChars = new char[word.Length];
             for (int i = 0; i < word.Length; i++)
@@ -81,13 +138,17 @@ namespace Hangman
                 hiddenWord.Append("_ ");
             }
 
-            stringBuilderInit.AppendLine("");
+            stringBuilderInit.AppendLine();
             stringBuilderInit.AppendLine("The secret word is: ");
             stringBuilderInit.AppendLine(hiddenWord.ToString());
             Console.WriteLine(stringBuilderInit.ToString());
         }
 
-        protected void ShowResults(string word)//used to be GameEndInitialization
+        /// <summary>
+        /// Show current result of the player 
+        /// </summary>
+        /// <param name="word">Word already guessed by player</param>
+        protected void ShowResults(string word) // used to be GameEndInitialization
         {
             Console.WriteLine("You won with {0} mistakes.", this.NotGuessedCharsCounter);
             this.RevealGuessedLetters(word);
@@ -105,22 +166,17 @@ namespace Hangman
             }
 
             if ((PlayersScore.Scoreboard[firstFreePosition] == null
-                || this.NotGuessedCharsCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes) 
-                && PlayerHasUsedHelp == false)
+                || this.NotGuessedCharsCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes)
+                && this.PlayerHasUsedHelp == false)
             {
-                GetHighScoreEntry(firstFreePosition);
+                this.GetHighScoreEntry(firstFreePosition);
             }
         }
-  
-        private void GetHighScoreEntry(int firstFreePosition)
-        {
-            Console.WriteLine("Please enter your name for the top scoreboard:");
-            string playerName = Console.ReadLine();
-            Player player = new Player(playerName, this.NotGuessedCharsCounter);//used to be newResult
-            PlayersScore.Scoreboard[firstFreePosition] = player;
-            PlayersScore.PlaceScore(firstFreePosition);
-        }
-
+        
+        /// <summary>
+        /// Reveals the guessed letter by player
+        /// </summary>
+        /// <param name="word">Word to be guessed by player</param>
         protected void RevealGuessedLetters(string word)
         {
             StringBuilder partiallyHiddenWord = new StringBuilder();
@@ -138,6 +194,18 @@ namespace Hangman
             }
 
             Console.WriteLine(partiallyHiddenWord);
+        }
+
+        /// <summary>
+        /// Save the result of the player in a scoreboard
+        /// </summary>
+        /// <param name="firstFreePosition"> First free position in Scoreboard</param>
+        private void GetHighScoreEntry(int firstFreePosition)
+        {
+            string playerName = GetPlayerName();
+            Player player = new Player(playerName, this.NotGuessedCharsCounter); // used to be newResult
+            PlayersScore.Scoreboard[firstFreePosition] = player;
+            PlayersScore.PlaceScore(firstFreePosition);
         }
     }
 }
