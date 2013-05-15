@@ -1,12 +1,31 @@
-﻿using System;
+﻿//----------------------------------------------------------------------------------
+// <copyright file="PlayersScore.cs" company="Teleric Academy Technetium Team">
+// Teleric Academy
+// </copyright>
+//---------------------------------------------------------------------------------
 
 namespace Hangman
 {
-    static class PlayersScore
+    using System;
+
+    /// <summary>
+    /// Keeps Sores of the players
+    /// </summary>
+    public static class PlayersScore
     {
-        private const int HighScoresNumber = 5;// used to be HIGH_SCORES_NUMBER
+        /// <summary>
+        /// Maximal number of scores to be kept
+        /// </summary>
+        private const int HighScoresNumber = 5; // used to be HIGH_SCORES_NUMBER
+
+        /// <summary>
+        /// Keeps best scores of the players
+        /// </summary>
         private static readonly Player[] scoreboard = new Player[HighScoresNumber];
 
+        /// <summary>
+        /// Gets the scoreboard of top results
+        /// </summary>
         public static Player[] Scoreboard
         {
             get
@@ -15,6 +34,9 @@ namespace Hangman
             }
         }
 
+        /// <summary>
+        /// Print top results
+        /// </summary>
         public static void PrintTopResults() // used to be TopResults
         {
             Console.WriteLine();
@@ -29,7 +51,11 @@ namespace Hangman
             Console.WriteLine();
         }
 
-        internal static void PlaceScore(int firstFreePosition) //used to be SortScore
+        /// <summary>
+        /// Recalculate the current scoreboard according to current player's score
+        /// </summary>
+        /// <param name="firstFreePosition">First free position in scoreboard</param>
+        internal static void PlaceScore(int firstFreePosition) // used to be SortScore
         {
             for (int i = firstFreePosition; i > 0; i--)
             {
