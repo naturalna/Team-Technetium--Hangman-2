@@ -15,7 +15,7 @@ namespace WordInitializatorTest
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
             WordGuesser wordGuesser = new WordGuesser(); // used to be wg
-            WordGuesser.Word = word;
+            wordGuesser.Word = word;
             
             using (StringReader sr = new StringReader(string.Format("help{0}", Environment.NewLine)))
             {
@@ -33,7 +33,7 @@ namespace WordInitializatorTest
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
             WordGuesser wordGuesser = new WordGuesser(); // used to be wg
-            WordGuesser.Word = word;
+            wordGuesser.Word = word;
 
             using (StringWriter sw = new StringWriter())
             {
@@ -54,7 +54,7 @@ namespace WordInitializatorTest
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
             WordGuesser wordGuesser = new WordGuesser(); // used to be wg
-            WordGuesser.Word = word;
+            wordGuesser.Word = word;
 
             using (StringWriter sw = new StringWriter())
             {
@@ -75,7 +75,7 @@ namespace WordInitializatorTest
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
             WordGuesser wordGuesser = new WordGuesser(); // used to be wg
-            WordGuesser.Word = word;
+            wordGuesser.Word = word;
 
             using (StringWriter sw = new StringWriter())
             {
