@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using Hangman;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,7 +10,7 @@ namespace WordInitializatorTest
     public class GuessRandererTests
     {
         [TestMethod]
-        public void GuessRandererTest_OrderedLettersMaskMustBeCorrect()
+        public void GuessHandlerTest_OrderedLettersMaskMustBeCorrect()
         {
             string word = "SomeWord";
             GuessHandler randerer = new GuessHandler();
@@ -59,6 +61,5 @@ namespace WordInitializatorTest
             randerer.RevealTheNextLetterByHelp(word);
             Assert.AreEqual(true, randerer.PlayerHasUsedHelp);
         }
-
     }
 }

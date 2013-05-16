@@ -144,7 +144,7 @@ namespace Hangman
             stringBuilderInit.AppendLine();
             stringBuilderInit.AppendLine("The secret word is: ");
             stringBuilderInit.AppendLine(hiddenWord.ToString());
-            Console.WriteLine(stringBuilderInit.ToString());
+           // Console.WriteLine(stringBuilderInit.ToString());
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Hangman
                 }
                 else
                 {
-                    partiallyHiddenWord.Append(this.RevealedChars[i].ToString() + " ");
+                    partiallyHiddenWord.Append(this.RevealedChars[i].ToString());
                 }
             }
 

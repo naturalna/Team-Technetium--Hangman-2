@@ -61,7 +61,7 @@ namespace Hangman
 
             if (this.GuessedCharsCounter == word.Length)
             {
-                this.ShowResults(word);
+                base.ShowResults(word);
                 CommandExecuter.Start();
             }
 
