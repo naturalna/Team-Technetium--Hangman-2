@@ -4,10 +4,10 @@
 // </copyright>
 //---------------------------------------------------------------------------------
 
+using System;
+
 namespace Hangman
 {
-    using System;
-
     /// <summary>
     /// Basic screen of the game
     /// </summary>

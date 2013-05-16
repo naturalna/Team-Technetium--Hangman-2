@@ -4,18 +4,18 @@
 // </copyright>
 //---------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+
 namespace Hangman
 {
-    using System;
-    using System.Linq;
-    
     /// <summary>
-    /// Manages the guesses of player
+    /// Manages the guesses of player.
     /// </summary>
-    public class GuessHandler : WordInitializator
+    public class GuessHandler : GameLogic
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GuessHandler"/> class
+        /// Initializes a new instance of the <see cref="GuessHandler"/> class.
         /// </summary>
         public GuessHandler() // used to be GuessRanderer
             : base()
@@ -23,11 +23,13 @@ namespace Hangman
         }
 
         /// <summary>
-        /// Initialize the word again after the player has guessed a letter
+        /// Shows the word after the player's guess. 
+        /// If the player guessed correctly then the correct letter in the word is revealed. 
+        /// Else the number of player's mistakes is increased by 1.
         /// </summary>
-        /// <param name="word">Word to be guessed by player</param>
-        /// <param name="charSupposed">Char entered by player</param>
-        public void InitializationAfterTheGuess(string word, char charSupposed)
+        /// <param name="word">Word to be guessed by player.</param>
+        /// <param name="charSupposed">Char entered by player.</param>
+        public void HandleUserGuess(string word, char charSupposed) //used to be InitializationAfterTheGuess
         {
             int supposedCharCounter = 0;
 
@@ -68,29 +70,29 @@ namespace Hangman
         }
 
         /// <summary>
-        /// Reveals a letter from the word when player asks for help
+        /// Reveals a letter from the word when player asks for help.
         /// </summary>
-        /// <param name="word">Word to be guessed by player</param>
+        /// <param name="word">Word to be guessed by player.</param>
         public void RevealTheNextLetterByHelp(string word)
         {
             char firstUnrevealedLetter = this.GetFirstUnrevealedLetter(word);
             Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
-            this.InitializationAfterTheGuess(word, firstUnrevealedLetter);
+            this.HandleUserGuess(word, firstUnrevealedLetter);
             this.PlayerHasUsedHelp = true;
         }
 
         /// <summary>
-        /// Gets first unrevealed letter in the word
+        /// Gets first unrevealed letter in the word.
         /// </summary>
-        /// <param name="word">Word to be guessed by player</param>
-        /// <returns>First not guessed letter in the word</returns>
+        /// <param name="word">Word to be guessed by player.</param>
+        /// <returns>First not guessed letter in the word.</returns>
         private char GetFirstUnrevealedLetter(string word)
         {
-            char firstUnrevealedLetter = '$';
+            char firstUnrevealedLetter = SpecialCharacter;
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (this.RevealedChars[i].Equals('$'))
+                if (this.RevealedChars[i].Equals(SpecialCharacter))
                 {
                     firstUnrevealedLetter = word[i];
                     break;

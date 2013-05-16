@@ -49,7 +49,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayersScore.cs" />
     <Compile Include="WordGuesser.cs" />
-    <Compile Include="WordInitializator.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="WordSelector.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,7 @@ namespace WordInitializatorTest
             string word = "SomeWord";
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
-            randerer.InitializationAfterTheGuess(word, 'a');
+            randerer.HandleUserGuess(word, 'a');
             Assert.IsTrue(randerer.MistakesCounter == 1);    
         }
 
@@ -32,7 +32,7 @@ namespace WordInitializatorTest
             string word = "SomeWord";
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
-            randerer.InitializationAfterTheGuess(word, 'o');
+            randerer.HandleUserGuess(word, 'o');
             Assert.IsTrue(randerer.GuessedCharsCounter == 2);
         }
 
@@ -43,9 +43,9 @@ namespace WordInitializatorTest
             string word = "test";
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
-            randerer.InitializationAfterTheGuess(word, 't');
+            randerer.HandleUserGuess(word, 't');
             int openLetters = randerer.GuessedCharsCounter;
-            randerer.InitializationAfterTheGuess(word, 't');
+            randerer.HandleUserGuess(word, 't');
             Assert.IsTrue(openLetters == randerer.GuessedCharsCounter);
         }
 

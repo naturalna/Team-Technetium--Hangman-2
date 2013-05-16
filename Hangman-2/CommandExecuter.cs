@@ -4,17 +4,18 @@
 // </copyright>
 //----------------------------------------------------------------------------------
 
+using System;
+
 namespace Hangman
 {
-    using System;
 
     /// <summary>
-    /// Executes commands given by player
+    /// Executes commands given by player.
     /// </summary>
     public static class CommandExecuter
     {
         /// <summary>
-        /// Starts the game
+        /// Starts the game.
         /// </summary>
         public static void Start() // used to be Restart
         {
@@ -24,16 +25,21 @@ namespace Hangman
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
             WordGuesser wordGuesser = new WordGuesser(); // used to be wg
-            WordGuesser.Word = word;
+            wordGuesser.Word = word;
 
-            while (randerer.GuessedCharsCounter < word.Length && WordGuesser.HasExited == false)
+            while (randerer.GuessedCharsCounter < word.Length && wordGuesser.HasExited == false)
             {
                 wordGuesser.HandleUserInput(randerer);
             }
         }
 
+        public static void Help(GuessHandler guessHandler, string word)
+        {
+            guessHandler.RevealTheNextLetterByHelp(word);
+        }
+
         /// <summary>
-        /// Print top results
+        /// Shows top results.
         /// </summary>
         public static void Top()
         {
@@ -41,12 +47,12 @@ namespace Hangman
         }
 
         /// <summary>
-        /// Exit the game
+        /// Exits the game.
         /// </summary>
-        public static void Exit()
+        public static void Exit(WordGuesser wordGuesser)
         {
             Console.WriteLine("Good bye!");
-            WordGuesser.HasExited = true;
+            wordGuesser.HasExited = true;
             return;
         }
     }

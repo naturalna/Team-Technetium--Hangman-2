@@ -4,10 +4,10 @@
 // </copyright>
 //---------------------------------------------------------------------------------
 
+using System;
+
 namespace Hangman
 {
-    using System;
-
     /// <summary>
     /// Keeps Sores of the players
     /// </summary>

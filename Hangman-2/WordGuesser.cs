@@ -4,30 +4,30 @@
 // </copyright>
 //---------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+
 namespace Hangman
 {
-    using System;
-    using System.Linq;
-
     /// <summary>
-    /// Manages the user input
+    /// Manages the user input.
     /// </summary>
     public class WordGuesser
     {
         /// <summary>
-        /// Word to be guessed by player
+        /// Word to be guessed by player.
         /// </summary>
-        private static string word;
+        private string word;
 
         /// <summary>
-        /// Keeps track whether the user wants to exit the game
+        /// Keeps track whether the user wants to exit the game.
         /// </summary>
-        private static bool hasExited;
+        private bool hasExited;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the player wants to exit
+        /// Gets or sets a value indicating whether the player wants to exit.
         /// </summary>
-        public static bool HasExited // used to be IsExited
+        public bool HasExited // used to be IsExited
         {
             get
             {
@@ -41,9 +41,9 @@ namespace Hangman
         }
 
         /// <summary>
-        /// Gets or sets a word to be guessed by player
+        /// Gets or sets a word to be guessed by player.
         /// </summary>
-        public static string Word
+        public string Word
         {
             get
             {
@@ -55,23 +55,23 @@ namespace Hangman
                 word = value;
             }
         }
-        
+
         /// <summary>
-        /// Handle player input
+        /// Handles player input.
         /// </summary>
-        /// <param name="guessHandler">Data input by player</param>
+        /// <param name="guessHandler">Data input by player.</param>
         public void HandleUserInput(GuessHandler guessHandler) // used to be GuessLetter
         {
-            string supposedCharOrCommand = this.ReadUserInput();
+            string supposedCharOrCommand = this.ReadPlayerInput();
 
             if (supposedCharOrCommand.Length == 1)
             {
                 char supposedChar = supposedCharOrCommand[0];
-                guessHandler.InitializationAfterTheGuess(Word, supposedChar);
+                guessHandler.HandleUserGuess(Word, supposedChar);
             }
             else if (supposedCharOrCommand.Equals("help"))
             {
-                guessHandler.RevealTheNextLetterByHelp(Word);
+                CommandExecuter.Help(guessHandler, Word);
             }
             else if (supposedCharOrCommand.Equals("restart"))
             {
@@ -79,7 +79,7 @@ namespace Hangman
             }
             else if (supposedCharOrCommand.Equals("exit"))
             {
-                CommandExecuter.Exit();
+                CommandExecuter.Exit(this);
             }
             else if (supposedCharOrCommand.Equals("top"))
             {
@@ -88,10 +88,10 @@ namespace Hangman
         }
 
         /// <summary>
-        /// Read user input
+        /// Reads player input.
         /// </summary>
-        /// <returns>String value - Player input</returns>
-        private string ReadUserInput()
+        /// <returns>Player's input.</returns>
+        private string ReadPlayerInput()
         {
             Console.WriteLine("Enter your guess: ");
             string input = Console.ReadLine();

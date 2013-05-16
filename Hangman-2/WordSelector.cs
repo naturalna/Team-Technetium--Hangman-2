@@ -4,11 +4,11 @@
 // </copyright>
 //---------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+
 namespace Hangman
 {
-    using System;
-    using System.Linq;
-
     /// <summary>
     /// Selects random word to be guessed by player
     /// </summary>

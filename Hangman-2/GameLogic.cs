@@ -15,6 +15,11 @@ namespace Hangman
     public abstract class GameLogic //used to be WordInitializator
     {
         /// <summary>
+        /// Special character that cannot be a part of the word.
+        /// </summary>
+        protected const char SpecialCharacter = '$';
+
+        /// <summary>
         /// Keep track of whether player has used help.
         /// </summary>
         private bool playerHasUsedHelp; // used to be isPlayerUsedHelp
@@ -132,7 +137,7 @@ namespace Hangman
             this.RevealedChars = new char[word.Length];
             for (int i = 0; i < word.Length; i++)
             {
-                this.RevealedChars[i] = '$';
+                this.RevealedChars[i] = SpecialCharacter;
                 hiddenWord.Append("_ ");
             }
 
@@ -152,9 +157,9 @@ namespace Hangman
             this.RevealGuessedLetters(word);
             Console.WriteLine();
 
-            int firstFreePosition = 4; //the first 4 players are in the scoreboard
+            int firstFreePosition = PlayersScore.Scoreboard.Length - 1; //the first 4 players are in the scoreboard
 
-            for (int i = 0; i < firstFreePosition; i++)
+            for (int i = 0; i < PlayersScore.Scoreboard.Length; i++)
             {
                 if (PlayersScore.Scoreboard[i] == null)
                 {
@@ -181,7 +186,7 @@ namespace Hangman
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (this.RevealedChars[i].Equals('$'))
+                if (this.RevealedChars[i].Equals(SpecialCharacter))
                 {
                     partiallyHiddenWord.Append("_ ");
                 }
