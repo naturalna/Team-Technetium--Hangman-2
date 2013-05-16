@@ -23,7 +23,7 @@ namespace WordInitializatorTest
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
             randerer.InitializationAfterTheGuess(word, 'a');
-            Assert.IsTrue(randerer.NotGuessedCharsCounter == 1);    
+            Assert.IsTrue(randerer.MistakesCounter == 1);    
         }
 
         [TestMethod]

@@ -49,7 +49,7 @@ namespace Hangman
             if (supposedCharCounter == 0)
             {
                 Console.WriteLine("Sorry! There are no unrevealed letters {0}", charSupposed);
-                this.NotGuessedCharsCounter++;
+                this.MistakesCounter++;
             }
             else
             {
