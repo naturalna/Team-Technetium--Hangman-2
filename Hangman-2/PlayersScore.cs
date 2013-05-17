@@ -16,7 +16,7 @@ namespace Hangman
         /// <summary>
         /// Maximal number of scores to be kept
         /// </summary>
-        private const int HighScoresNumber = 5; // used to be HIGH_SCORES_NUMBER
+        private const int HighScoresNumber = 5; 
 
         /// <summary>
         /// Keeps best scores of the players
@@ -37,7 +37,7 @@ namespace Hangman
         /// <summary>
         /// Print top results
         /// </summary>
-        public static void PrintTopResults() // used to be TopResults
+        public static void PrintTopResults() 
         {
             Console.WriteLine();
             for (int i = 0; i < 5; i++)
