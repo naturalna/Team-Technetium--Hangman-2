@@ -122,7 +122,7 @@ namespace Hangman
             stringBuilderInit.AppendLine();
             stringBuilderInit.AppendLine("The secret word is: ");
             stringBuilderInit.AppendLine(hiddenWord.ToString());
-            Console.WriteLine(stringBuilderInit.ToString());
+            //Console.WriteLine(stringBuilderInit.ToString());
         }
 
         /// <summary>
