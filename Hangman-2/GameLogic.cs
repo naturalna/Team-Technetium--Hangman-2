@@ -20,11 +20,6 @@ namespace Hangman
         protected const char SpecialCharacter = '$';
 
         /// <summary>
-        /// Keep track of whether player has used help.
-        /// </summary>
-        private bool playerHasUsedHelp;
-
-        /// <summary>
         /// Keeps revealed characters.
         /// </summary>
         private char[] revealedChars; // used to be orderedLettersMask
@@ -44,7 +39,6 @@ namespace Hangman
         /// </summary>
         public GameLogic()
         {
-            this.playerHasUsedHelp = false;
             this.guessedCharsCounter = 0;
             this.mistakesCounter = 0;
         }
@@ -80,22 +74,6 @@ namespace Hangman
                 this.mistakesCounter = value;
             }
         }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the player has used help.
-        /// </summary>
-        //public bool PlayerHasUsedHelp
-        //{
-        //    get
-        //    {
-        //        return this.playerHasUsedHelp;
-        //    }
-
-        //    protected set
-        //    {
-        //        this.playerHasUsedHelp = value;
-        //    }
-        //}
 
         /// <summary>
         /// Gets or sets revealed by player characters.
