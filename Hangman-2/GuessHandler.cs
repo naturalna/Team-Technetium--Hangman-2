@@ -78,7 +78,8 @@ namespace Hangman
             char firstUnrevealedLetter = this.GetFirstUnrevealedLetter(word);
             Console.WriteLine("OK, I reveal for you the next letter {0}.", firstUnrevealedLetter);
             this.HandleUserGuess(word, firstUnrevealedLetter);
-            this.PlayerHasUsedHelp = true;
+            //this.PlayerHasUsedHelp = true;
+            this.MistakesCounter = this.MistakesCounter + 1;
         }
 
         /// <summary>

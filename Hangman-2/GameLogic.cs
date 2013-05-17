@@ -68,7 +68,7 @@ namespace Hangman
         /// <summary>
         /// Gets or sets number of mistaken characters.
         /// </summary>
-        public int MistakesCounter 
+        public int MistakesCounter
         {
             get
             {
@@ -84,23 +84,23 @@ namespace Hangman
         /// <summary>
         /// Gets or sets a value indicating whether the player has used help.
         /// </summary>
-        public bool PlayerHasUsedHelp
-        {
-            get
-            {
-                return this.playerHasUsedHelp;
-            }
+        //public bool PlayerHasUsedHelp
+        //{
+        //    get
+        //    {
+        //        return this.playerHasUsedHelp;
+        //    }
 
-            protected set
-            {
-                this.playerHasUsedHelp = value;
-            }
-        }
+        //    protected set
+        //    {
+        //        this.playerHasUsedHelp = value;
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets revealed by player characters.
         /// </summary>
-        public char[] RevealedChars 
+        public char[] RevealedChars
         {
             get
             {
@@ -117,7 +117,7 @@ namespace Hangman
         /// Gets the name of the player.
         /// </summary>
         /// <returns>The name of the player.</returns>
-        public static string InputUserName() 
+        public static string InputUserName()
         {
             Console.WriteLine("Please enter your name for the top scoreboard:");
             string playerName = Console.ReadLine();
@@ -151,7 +151,7 @@ namespace Hangman
         /// Show current result of the player.
         /// </summary>
         /// <param name="word">Word already guessed by player.</param>
-        protected void ShowResults(string word) 
+        protected void ShowResults(string word)
         {
             Console.WriteLine("You won with {0} mistakes.", this.MistakesCounter);
             this.RevealGuessedLetters(word);
@@ -169,8 +169,7 @@ namespace Hangman
             }
 
             if ((PlayersScore.Scoreboard[firstFreePosition] == null
-                || this.MistakesCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes)
-                && this.PlayerHasUsedHelp == false)
+                || this.MistakesCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes))
             {
                 this.GetHighScoreEntry(firstFreePosition);
             }

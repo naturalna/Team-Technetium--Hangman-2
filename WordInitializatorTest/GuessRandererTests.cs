@@ -57,7 +57,7 @@ namespace WordInitializatorTest
             randerer.PlayRound(word);
             randerer.RevealTheNextLetterByHelp(word);
             randerer.RevealTheNextLetterByHelp(word);
-            Assert.AreEqual(true, randerer.PlayerHasUsedHelp);
+            Assert.AreEqual(2, randerer.MistakesCounter);
         }
     }
 }
