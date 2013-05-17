@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using Hangman;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -10,7 +9,7 @@ namespace WordInitializatorTest
     public class CommandExecuterTest
     {
         [TestMethod]
-        public void Top_emptyScoreBoard()
+        public void TopEmptyScoreBoardTest()
         {           
             using (StringWriter sw = new StringWriter())
             {
@@ -21,7 +20,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void Exit_emptyScoreBoard()
+        public void ExitEmptyScoreBoardTest()
         {
             using (StringWriter sw = new StringWriter())
             {

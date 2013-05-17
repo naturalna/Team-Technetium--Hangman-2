@@ -10,7 +10,7 @@ namespace WordInitializatorTest
     public class GuessRandererTests
     {
         [TestMethod]
-        public void GuessHandlerTest_OrderedLettersMaskMustBeCorrect()
+        public void GuessHandlerTest_OrderedLettersMaskMustBeCorrectTest()
         {
             string word = "SomeWord";
             GuessHandler randerer = new GuessHandler();
@@ -29,7 +29,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void InitializationAfterTheGuessTest_TwoGestLettersAtTheSameTime()
+        public void InitializationAfterTheGuessTest_TwoGestLettersAtTheSameTimeTest()
         {
             string word = "SomeWord";
             GuessHandler randerer = new GuessHandler();
@@ -40,7 +40,7 @@ namespace WordInitializatorTest
 
 
         [TestMethod]
-        public void InitializationAfterTheGuessTest_AlreadyRevelaedLetter()
+        public void InitializationAfterTheGuessTest_AlreadyRevelaedLetterTest()
         {
             string word = "test";
             GuessHandler randerer = new GuessHandler();
@@ -52,7 +52,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void RevealTheNextLetterByHelpTest_useHelpTwice()
+        public void RevealTheNextLetterByHelpTestUseHelpTwiceTest()
         {
             string word = "test";
             GuessHandler randerer = new GuessHandler();

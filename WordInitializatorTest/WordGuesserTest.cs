@@ -9,7 +9,7 @@ namespace WordInitializatorTest
     public class WordGuesserTest
     {
         [TestMethod]
-        public void HandleUserInput_Help()
+        public void HandleUserInput_HelpTest()
         {
             string word = "word";
             GuessHandler randerer = new GuessHandler();
@@ -27,7 +27,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void HandleUserInput_Exit()
+        public void HandleUserInput_ExitTest()
         {
             string word = "word";
             GuessHandler randerer = new GuessHandler();
@@ -48,7 +48,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void HandleUserInput_Top()
+        public void HandleUserInput_TopTest()
         {
             string word = "word";
             GuessHandler randerer = new GuessHandler();
@@ -69,7 +69,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void HandleUserInput_Char()
+        public void HandleUserInput_CharTest()
         {
             string word = "word";
             GuessHandler randerer = new GuessHandler();

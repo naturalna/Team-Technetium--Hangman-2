@@ -9,7 +9,7 @@ namespace WordInitializatorTest
     public class MainTest
     {
         [TestMethod]
-        public void MainTest_Exit()
+        public void MainTest_ExitTest()
         {
             using (StringWriter sw = new StringWriter())
             {

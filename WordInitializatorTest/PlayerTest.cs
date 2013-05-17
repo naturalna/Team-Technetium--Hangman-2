@@ -8,7 +8,7 @@ namespace WordInitializatorTest
     public class PlayerTest
     {
         [TestMethod]
-        public void Player_CompareTwoPlayerFirstBiggerThanSecond()
+        public void Player_CompareTwoPlayerFirstBiggerThanSecondTest()
         {
             Player playerIvan = new Player("Ivan", 2);
             Player playerAsen = new Player("Asen", 3);
@@ -17,7 +17,7 @@ namespace WordInitializatorTest
         }
 
         [TestMethod]
-        public void Player_CompareTwoPlayerSecondBiggerThanFirst()
+        public void Player_CompareTwoPlayerSecondBiggerThanFirstTest()
         {
             Player playerIvan = new Player("Ivan", 2);
             Player playerAsen = new Player("Asen", 3);
@@ -27,7 +27,7 @@ namespace WordInitializatorTest
 
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
-        public void Player_CompareTwoPlayerWithNegativeMistakes()
+        public void Player_CompareTwoPlayerWithNegativeMistakesTest()
         {
             Player playerIvan = new Player("Ivan", 2);
             Player playerAsen = new Player("Asen", -4);
@@ -37,7 +37,7 @@ namespace WordInitializatorTest
 
         [ExpectedException(typeof(ArgumentNullException))]
         [TestMethod]
-        public void Player_CompareTwoPlayersWithNullName()
+        public void Player_CompareTwoPlayersWithNullNameTest()
         {
             Player playerIvan = new Player(null, 2);
             Player playerAsen = new Player("Asen", -4);
