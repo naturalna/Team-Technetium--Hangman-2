@@ -11,7 +11,7 @@ namespace Hangman
     /// <summary>
     /// Contains information about player.
     /// </summary>
-    public class Player // used to be PlayerMistake
+    public class Player 
     {
         /// <summary>
         /// Player name.

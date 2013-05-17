@@ -22,12 +22,12 @@ namespace Hangman
         /// <summary>
         /// Keep track of whether player has used help.
         /// </summary>
-        private bool playerHasUsedHelp; 
+        private bool playerHasUsedHelp;
 
         /// <summary>
         /// Keeps revealed characters.
         /// </summary>
-        private char[] revealedChars;
+        private char[] revealedChars; // used to be orderedLettersMask
 
         /// <summary>
         /// Counts guessed characters.
@@ -37,7 +37,7 @@ namespace Hangman
         /// <summary>
         /// Counts not guessed characters.
         /// </summary>
-        private int mistakesCounter;
+        private int mistakesCounter; //used to be notGuessedCharsCounter
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WordInitializator"/> class.
@@ -101,6 +101,17 @@ namespace Hangman
         /// Gets or sets revealed by player characters.
         /// </summary>
         public char[] RevealedChars 
+        {
+            get
+            {
+                return this.revealedChars;
+            }
+
+            protected set
+            {
+                this.revealedChars = value;
+            }
+        }
 
         /// <summary>
         /// Gets the name of the player.
@@ -141,6 +152,29 @@ namespace Hangman
         /// </summary>
         /// <param name="word">Word already guessed by player.</param>
         protected void ShowResults(string word) 
+        {
+            Console.WriteLine("You won with {0} mistakes.", this.MistakesCounter);
+            this.RevealGuessedLetters(word);
+            Console.WriteLine();
+
+            int firstFreePosition = PlayersScore.Scoreboard.Length - 1; //the first 4 players are in the scoreboard
+
+            for (int i = 0; i < PlayersScore.Scoreboard.Length; i++)
+            {
+                if (PlayersScore.Scoreboard[i] == null)
+                {
+                    firstFreePosition = i;
+                    break;
+                }
+            }
+
+            if ((PlayersScore.Scoreboard[firstFreePosition] == null
+                || this.MistakesCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes)
+                && this.PlayerHasUsedHelp == false)
+            {
+                this.GetHighScoreEntry(firstFreePosition);
+            }
+        }
 
         /// <summary>
         /// Reveals the guessed letter by player.

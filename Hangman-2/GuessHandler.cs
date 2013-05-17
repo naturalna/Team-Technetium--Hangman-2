@@ -29,7 +29,7 @@ namespace Hangman
         /// </summary>
         /// <param name="word">Word to be guessed by player.</param>
         /// <param name="charSupposed">Char entered by player.</param>
-        public void HandleUserGuess(string word, char charSupposed) //used to be InitializationAfterTheGuess
+        public void HandleUserGuess(string word, char charSupposed) 
         {
             int supposedCharCounter = 0;
 

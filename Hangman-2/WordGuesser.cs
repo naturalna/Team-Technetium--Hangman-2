@@ -27,7 +27,7 @@ namespace Hangman
         /// <summary>
         /// Gets or sets a value indicating whether the player wants to exit.
         /// </summary>
-        public bool HasExited 
+        public bool HasExited;
 
         /// <summary>
         /// Gets or sets a word to be guessed by player.

@@ -17,14 +17,14 @@ namespace Hangman
         /// <summary>
         /// Starts the game.
         /// </summary>
-        public static void Start() // used to be Restart
+        public static void Start() 
         {
             Console.WriteLine();
             WordSelector wordSelector = new WordSelector();
             string word = wordSelector.SelectRandomWord();
             GuessHandler randerer = new GuessHandler();
             randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); // used to be wg
+            WordGuesser wordGuesser = new WordGuesser(); 
             wordGuesser.Word = word;
 
             while (randerer.GuessedCharsCounter < word.Length && wordGuesser.HasExited == false)
