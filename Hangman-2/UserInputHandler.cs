@@ -1,5 +1,5 @@
 ﻿//----------------------------------------------------------------------------------
-// <copyright file="WordGuesser.cs" company="Teleric Academy Technetium Team">
+// <copyright file="UserInputHandler.cs" company="Teleric Academy Technetium Team">
 // Teleric Academy
 // </copyright>
 //---------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ namespace Hangman
     /// <summary>
     /// Manages the user input.
     /// </summary>
-    public class WordGuesser
+    public class UserInputHandler
     {
         /// <summary>
         /// Word to be guessed by player.
@@ -49,7 +49,7 @@ namespace Hangman
         /// Handles player input.
         /// </summary>
         /// <param name="guessHandler">Data input by player.</param>
-        public void HandleUserInput(GuessHandler guessHandler) // used to be GuessLetter
+        public void HandleUserInput(GuessCharacterHandler guessHandler) // used to be GuessLetter
         {
             string supposedCharOrCommand = this.ReadPlayerInput();
 

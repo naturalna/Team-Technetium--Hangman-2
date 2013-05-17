@@ -11,7 +11,7 @@ namespace WordInitializatorTest
         public void GuessHandlerTest_OrderedLettersMaskMustBeCorrectTest()
         {
             string word = "SomeWord";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
             Assert.IsTrue(randerer.RevealedChars.Length == word.Length);  
         }
@@ -20,7 +20,7 @@ namespace WordInitializatorTest
         public void InitializationAfterTheGuessTest()
         {
             string word = "SomeWord";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
             randerer.HandleUserGuess(word, 'a');
             Assert.IsTrue(randerer.MistakesCounter == 1);    
@@ -30,7 +30,7 @@ namespace WordInitializatorTest
         public void InitializationAfterTheGuessTest_TwoGestLettersAtTheSameTimeTest()
         {
             string word = "SomeWord";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
             randerer.HandleUserGuess(word, 'o');
             Assert.IsTrue(randerer.GuessedCharsCounter == 2);
@@ -41,7 +41,7 @@ namespace WordInitializatorTest
         public void InitializationAfterTheGuessTest_AlreadyRevelaedLetterTest()
         {
             string word = "test";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
             randerer.HandleUserGuess(word, 't');
             int openLetters = randerer.GuessedCharsCounter;
@@ -53,7 +53,7 @@ namespace WordInitializatorTest
         public void RevealTheNextLetterByHelpTestUseHelpTwiceTest()
         {
             string word = "test";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
             randerer.RevealTheNextLetterByHelp(word);
             randerer.RevealTheNextLetterByHelp(word);

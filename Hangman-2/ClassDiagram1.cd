@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Hangman.CommandExecuter">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAIAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAIAAAAAAAAAAAAAAAIAAAAIAAAAAAAAAA=</HashCode>
       <FileName>CommandExecuter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hangman.GuessHandler">
-    <Position X="0.5" Y="0.5" Width="2" />
+  <Class Name="Hangman.GameLogic">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAgAAAAAAAAA=</HashCode>
-      <FileName>GuessHandler.cs</FileName>
+      <HashCode>AAAAAAABAAQAAQAAAEAAAAAAAAABAAAAAQEgAAEBAAA=</HashCode>
+      <FileName>GameLogic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.GuessCharacterHandler">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAgAAAAAAQAA=</HashCode>
+      <FileName>GuessCharacterHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.MainClass">
-    <Position X="0.5" Y="2.75" Width="1.5" />
+    <Position X="4.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>MainClass.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.Player">
-    <Position X="9.25" Y="0.5" Width="1.75" />
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAABEAAAAAAAAAABAAAABAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.PlayersScore">
-    <Position X="7.25" Y="0.5" Width="1.75" />
+    <Position X="2.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAgAAIAAAACAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>PlayersScore.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hangman.WordGuesser">
-    <Position X="5.25" Y="2.25" Width="1.5" />
+  <Class Name="Hangman.UserInputHandler">
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAIBAAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
-      <FileName>WordGuesser.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hangman.WordInitializator">
-    <Position X="2.75" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAIAAAgAAAAIAAAAAABAABAAQMgAAEBAAA=</HashCode>
-      <FileName>WordInitializator.cs</FileName>
+      <HashCode>AAEAAAIBAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>UserInputHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hangman.WordSelector">
-    <Position X="7.5" Y="3.25" Width="2.25" />
+    <Position X="6.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACAAAAAAAAQ=</HashCode>
       <FileName>WordSelector.cs</FileName>

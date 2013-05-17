@@ -13,9 +13,9 @@ namespace WordInitializatorTest
         {
 
             string word = "word";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); // used to be wg
+            UserInputHandler wordGuesser = new UserInputHandler(); // used to be wg
             wordGuesser.Word = word;
 
             using (StringReader sr = new StringReader(string.Format("help{0}", Environment.NewLine)))

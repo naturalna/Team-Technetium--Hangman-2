@@ -24,7 +24,7 @@ namespace WordInitializatorTest
         {
             using (StringWriter sw = new StringWriter())
             {
-                WordGuesser wordGuesser = new WordGuesser();
+                UserInputHandler wordGuesser = new UserInputHandler();
                 Console.SetOut(sw);
                 CommandExecuter.Exit(wordGuesser);
                 Assert.AreEqual<string>("Good bye!\r\n", sw.ToString());

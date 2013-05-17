@@ -14,7 +14,7 @@ namespace Hangman
     public class MainClass
     {
         /// <summary>
-        /// Give information to player about commands he can use
+        /// Give information to player about commands he can use.
         /// </summary>
         public static void Main()
         {

@@ -7,7 +7,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{541b4f1f-d055-4672-b968-f13e138c8fc9}</ProjectGuid>
+    <ProjectGuid>{d8403d55-88a5-4161-8c90-47b2b355c194}</ProjectGuid>
     <SHFBSchemaVersion>1.9.5.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
          Studio adds them anyway -->

@@ -44,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandExecuter.cs" />
-    <Compile Include="GuessHandler.cs" />
+    <Compile Include="GuessCharacterHandler.cs" />
     <Compile Include="MainClass.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayersScore.cs" />
-    <Compile Include="WordGuesser.cs" />
+    <Compile Include="UserInputHandler.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="WordSelector.cs" />
   </ItemGroup>

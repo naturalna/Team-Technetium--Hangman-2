@@ -1,23 +1,24 @@
 ﻿//----------------------------------------------------------------------------------
-// <copyright file="GuessHandler.cs" company="Teleric Academy Technetium Team">
+// <copyright file="GuessCharacterHandler.cs" company="Teleric Academy Technetium Team">
 // Teleric Academy
 // </copyright>
 //---------------------------------------------------------------------------------
 
 using System;
 using System.Linq;
+using System.Text;
 
 namespace Hangman
 {
     /// <summary>
     /// Manages the guesses of player.
     /// </summary>
-    public class GuessHandler : GameLogic
+    public class GuessCharacterHandler : GameLogic
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GuessHandler"/> class.
+        /// Initializes a new instance of the <see cref="GuessCharacterHandler"/> class.
         /// </summary>
-        public GuessHandler() // used to be GuessRanderer
+        public GuessCharacterHandler() // used to be GuessRanderer
             : base()
         {
         }
@@ -61,7 +62,7 @@ namespace Hangman
 
             if (this.GuessedCharsCounter == word.Length)
             {
-                base.ShowResults(word);
+                base.EndOfGame(word);
                 CommandExecuter.Start();
             }
 
@@ -101,6 +102,29 @@ namespace Hangman
             }
 
             return firstUnrevealedLetter;
+        }
+
+        /// <summary>
+        /// Starts the new game with new word.
+        /// </summary>
+        /// <param name="word">Word to be guessed by player.</param>
+        public void PlayRound(string word)
+        {
+            Console.WriteLine("Please try to guess my secret word.");
+            StringBuilder stringBuilderInit = new StringBuilder();
+
+            StringBuilder hiddenWord = new StringBuilder();
+            this.RevealedChars = new char[word.Length];
+            for (int i = 0; i < word.Length; i++)
+            {
+                this.RevealedChars[i] = SpecialCharacter;
+                hiddenWord.Append("_ ");
+            }
+
+            stringBuilderInit.AppendLine();
+            stringBuilderInit.AppendLine("The secret word is: ");
+            stringBuilderInit.AppendLine(hiddenWord.ToString());
+            //Console.WriteLine(stringBuilderInit.ToString());
         }
     }
 }

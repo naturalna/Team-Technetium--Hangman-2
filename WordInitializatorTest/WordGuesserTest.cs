@@ -12,9 +12,9 @@ namespace WordInitializatorTest
         public void HandleUserInput_HelpTest()
         {
             string word = "word";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); // used to be wg
+            UserInputHandler wordGuesser = new UserInputHandler(); // used to be wg
             wordGuesser.Word = word;
             
             using (StringReader sr = new StringReader(string.Format("help{0}", Environment.NewLine)))
@@ -30,9 +30,9 @@ namespace WordInitializatorTest
         public void HandleUserInput_ExitTest()
         {
             string word = "word";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); // used to be wg
+            UserInputHandler wordGuesser = new UserInputHandler(); // used to be wg
             wordGuesser.Word = word;
 
             using (StringWriter sw = new StringWriter())
@@ -51,9 +51,9 @@ namespace WordInitializatorTest
         public void HandleUserInput_TopTest()
         {
             string word = "word";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); // used to be wg
+            UserInputHandler wordGuesser = new UserInputHandler(); // used to be wg
             wordGuesser.Word = word;
 
             using (StringWriter sw = new StringWriter())
@@ -72,9 +72,9 @@ namespace WordInitializatorTest
         public void HandleUserInput_CharTest()
         {
             string word = "word";
-            GuessHandler randerer = new GuessHandler();
+            GuessCharacterHandler randerer = new GuessCharacterHandler();
             randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); // used to be wg
+            UserInputHandler wordGuesser = new UserInputHandler(); // used to be wg
             wordGuesser.Word = word;
 
             using (StringWriter sw = new StringWriter())

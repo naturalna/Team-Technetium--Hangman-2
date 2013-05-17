@@ -103,33 +103,10 @@ namespace Hangman
         }
 
         /// <summary>
-        /// Starts the new game with new word.
-        /// </summary>
-        /// <param name="word">Word to be guessed by player.</param>
-        public void PlayRound(string word)
-        {
-            Console.WriteLine("Please try to guess my secret word.");
-            StringBuilder stringBuilderInit = new StringBuilder();
-
-            StringBuilder hiddenWord = new StringBuilder();
-            this.RevealedChars = new char[word.Length];
-            for (int i = 0; i < word.Length; i++)
-            {
-                this.RevealedChars[i] = SpecialCharacter;
-                hiddenWord.Append("_ ");
-            }
-
-            stringBuilderInit.AppendLine();
-            stringBuilderInit.AppendLine("The secret word is: ");
-            stringBuilderInit.AppendLine(hiddenWord.ToString());
-            //Console.WriteLine(stringBuilderInit.ToString());
-        }
-
-        /// <summary>
         /// Show current result of the player.
         /// </summary>
         /// <param name="word">Word already guessed by player.</param>
-        protected void ShowResults(string word)
+        protected void EndOfGame(string word)
         {
             Console.WriteLine("You won with {0} mistakes.", this.MistakesCounter);
             this.RevealGuessedLetters(word);
@@ -146,8 +123,8 @@ namespace Hangman
                 }
             }
 
-            if ((PlayersScore.Scoreboard[firstFreePosition] == null
-                || this.MistakesCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes))
+            if ((PlayersScore.Scoreboard[firstFreePosition] == null || 
+                this.MistakesCounter <= PlayersScore.Scoreboard[firstFreePosition].NumberOfMistakes))
             {
                 this.GetHighScoreEntry(firstFreePosition);
             }

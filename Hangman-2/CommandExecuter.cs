@@ -22,18 +22,18 @@ namespace Hangman
             Console.WriteLine();
             WordSelector wordSelector = new WordSelector();
             string word = wordSelector.SelectRandomWord();
-            GuessHandler randerer = new GuessHandler();
-            randerer.PlayRound(word);
-            WordGuesser wordGuesser = new WordGuesser(); 
+            GuessCharacterHandler guessHandler = new GuessCharacterHandler();
+            guessHandler.PlayRound(word);
+            UserInputHandler wordGuesser = new UserInputHandler(); 
             wordGuesser.Word = word;
 
-            while (randerer.GuessedCharsCounter < word.Length && wordGuesser.HasExited == false)
+            while (guessHandler.GuessedCharsCounter < word.Length && wordGuesser.HasExited == false)
             {
-                wordGuesser.HandleUserInput(randerer);
+                wordGuesser.HandleUserInput(guessHandler);
             }
         }
 
-        public static void Help(GuessHandler guessHandler, string word)
+        public static void Help(GuessCharacterHandler guessHandler, string word)
         {
             guessHandler.RevealTheNextLetterByHelp(word);
         }
@@ -49,7 +49,7 @@ namespace Hangman
         /// <summary>
         /// Exits the game.
         /// </summary>
-        public static void Exit(WordGuesser wordGuesser)
+        public static void Exit(UserInputHandler wordGuesser)
         {
             Console.WriteLine("Good bye!");
             wordGuesser.HasExited = true;
